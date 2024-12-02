@@ -1,0 +1,72 @@
+Problem: 1346. Check If N and Its Double Exist
+Description:
+Given an array arr of integers, determine if there exist two indices i and j such that:
+
+i != j
+0 <= i, j < arr.length
+arr[i] == 2 * arr[j]
+Solution
+Approach: Brute Force
+The solution iterates through every pair of elements in the array using nested loops. For each pair (i, j), it checks if:
+
+The indices are distinct (i != j).
+One element is twice the other (arr[i] == 2 * arr[j]).
+If such a pair is found, the function immediately returns true. If no such pair exists after all iterations, it returns false.
+
+
+
+Code:
+java
+Copy code
+class Solution {
+    public boolean checkIfExist(int[] arr) {
+        // Iterate through each element in the array
+        for (int i = 0; i < arr.length; i++) {
+            // Compare with every other element
+            for (int j = 0; j < arr.length; j++) {
+                // Check if indices are different and one is double the other
+                if (i != j && arr[i] == 2 * arr[j]) {
+                    return true; // Pair found
+                }
+            }
+        }
+        return false; // No valid pair found
+    }
+}
+
+
+
+Learned Concepts
+Nested Loops:
+
+Used to compare all pairs of elements in the array.
+Outer loop iterates through each element, and the inner loop checks every other element against it.
+Index Validation:
+
+Ensure i != j to avoid comparing the same element with itself.
+Condition Checking:
+
+Use logical operators (&&) to combine multiple conditions.
+Example Walkthrough
+Example 1:
+Input: arr = [10, 2, 5, 3]
+
+Outer loop (i = 0):
+Check arr[0] = 10 with arr[1], arr[2], arr[3].
+Found: arr[0] == 2 * arr[2] → Return true.
+Example 2:
+Input: arr = [3, 1, 7, 11]
+
+Outer loop (i = 0):
+Check arr[0] = 3 with arr[1], arr[2], arr[3].
+Continue for i = 1, 2, 3.
+No valid pair found → Return false.
+Complexity Analysis
+Time Complexity: 
+𝑂(𝑛2)
+O(n2)
+The nested loop results in quadratic time complexity.
+Space Complexity: 
+𝑂(1)
+O(1)
+No additional space is used.
